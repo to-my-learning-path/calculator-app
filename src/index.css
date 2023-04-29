@@ -3,9 +3,11 @@
 @layer base {
   :root {
     --color-bg-main: hsl(222, 26%, 31%);
-    --color-bg-toggle: hsl(223, 31%, 20%);
     --color-bg-keypad: hsl(223, 31%, 20%);
     --color-bg-screen: hsl(224, 36%, 15%);
+
+    --color-toggle-background: hsl(223, 31%, 20%);
+    --color-toggle-thumb: hsl(6, 63%, 50%);
 
     --color-resetKey-background: hsl(225, 21%, 49%);
     --color-resetKey-shadow: hsl(224, 28%, 35%);
@@ -55,3 +57,35 @@
 
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  input[type="range"] {
+    /* removing default appearance */
+    -webkit-appearance: none;
+    appearance: none;
+    /* creating a custom design */
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  /* Track: webkit browsers */
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 19px;
+    padding: 3px;
+    background: var(--color-toggle-background);
+  }
+
+  /* Thumb: webkit */
+  input[type="range"]::-webkit-slider-thumb {
+    /* removing default appearance */
+    -webkit-appearance: none;
+    appearance: none;
+    /* creating a custom design */
+    height: 14px;
+    width: 14px;
+    background-color: var(--color-toggle-thumb);
+    border-radius: 50%;
+  }
+}

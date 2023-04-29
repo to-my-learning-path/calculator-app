@@ -6,9 +6,12 @@ export default {
     colors: {
       background: {
         main: "var(--color-bg-main)",
-        toggle: "var(--color-bg-toggle)",
         keypad: "var(--color-bg-keypad)",
         screen: "var(--color-bg-screen)",
+      },
+      toggle: {
+        background: "--color-toggle-background",
+        thumb: "--color-toggle-thumb",
       },
       resetKey: {
         background: "var(--color-resetKey-background)",
