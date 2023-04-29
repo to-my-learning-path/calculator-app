@@ -20,6 +20,7 @@
 
     --color-numberKey-text: hsl(221, 14%, 31%);
     --color-primary-text: hsl(0, 0%, 100%);
+    --color-secondary-text: hsl(0, 0%, 100%);
   }
 
   body {
@@ -31,28 +32,46 @@
 
 .theme-two {
   --color-bg-main: hsl(0, 0%, 90%);
-  --color-bg-toggle: hsl(0, 5%, 81%);
   --color-bg-keypad: hsl(0, 5%, 81%);
   --color-bg-screen: hsl(0, 0%, 93%);
 
-  --color-keys-background: hsl(185, 42%, 37%);
-  --color-keys-shadow: hsl(185, 58%, 25%);
+  --color-toggle-background: hsl(0, 5%, 81%);
+  --color-toggle-thumb: hsl(25, 98%, 40%);
 
-  --color-text-one: hsl(60, 10%, 19%);
-  --color-text-two: hsl(0, 0%, 100%);
+  --color-resetKey-background: hsl(185, 42%, 37%);
+  --color-resetKey-shadow: hsl(185, 58%, 25%);
+
+  --color-equalKey-background: hsl(25, 98%, 40%);
+  --color-equalKey-shadow: hsl(25, 99%, 27%);
+
+  --color-numberKey-background: hsl(45, 7%, 89%);
+  --color-numberKey-shadow: hsl(35, 11%, 61%);
+
+  --color-numberKey-text: hsl(60, 10%, 19%);
+  --color-primary-text: hsl(60, 10%, 19%);
+  --color-secondary-text: hsl(0, 0%, 100%);
 }
 
 .theme-three {
   --color-bg-main: hsl(268, 75%, 9%);
-  --color-bg-toggle: hsl(268, 71%, 12%);
   --color-bg-keypad: hsl(268, 71%, 12%);
   --color-bg-screen: hsl(268, 71%, 12%);
 
-  --color-keys-background: hsl(281, 89%, 26%);
-  --color-keys-shadow: hsl(285, 91%, 52%);
+  --color-toggle-background: hsl(268, 71%, 12%);
+  --color-toggle-thumb: hsl(176, 100%, 44%);
 
-  --color-text-one: hsl(52, 100%, 62%);
-  --color-text-two: hsl(0, 0%, 100%);
+  --color-resetKey-background: hsl(281, 89%, 26%);
+  --color-resetKey-shadow: hsl(285, 91%, 52%);
+
+  --color-equalKey-background: hsl(176, 100%, 44%);
+  --color-equalKey-shadow: hsl(177, 92%, 70%);
+
+  --color-numberKey-background: hsl(268, 47%, 21%);
+  --color-numberKey-shadow: hsl(290, 70%, 36%);
+
+  --color-numberKey-text: hsl(52, 100%, 62%);
+  --color-primary-text: hsl(52, 100%, 62%);
+  --color-secondary-text: hsl(0, 0%, 100%);
 }
 
 @tailwind components;

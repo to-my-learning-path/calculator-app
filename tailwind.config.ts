@@ -28,6 +28,7 @@ export default {
       text: {
         numberKey: "var(--color-numberKey-text)",
         primary: "var(--color-primary-text)",
+        secondary: "var(--color-secondary-text)",
       },
     },
 
