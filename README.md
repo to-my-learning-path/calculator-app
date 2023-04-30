@@ -1,6 +1,6 @@
 # Frontend Mentor - Calculator app solution
 
-This is a solution to the [Calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -16,8 +16,9 @@ This is a solution to the [Calculator app challenge on Frontend Mentor](https://
 
 ### Screenshot
 
-![Desktop View](./screenshot/screenshot_1.png)
-![Mobile View](./screenshot/screenshot_2.png)
+![Desktop View with theme one](./screenshot/screenshot_1.png)
+![Desktop View  with theme two](./screenshot/screenshot_2.png)
+![Desktop View with theme three](./screenshot/screenshot_3.png)
 
 ### Links
 
@@ -39,7 +40,7 @@ This is a solution to the [Calculator app challenge on Frontend Mentor](https://
 
 ### What I learned
 
-...
+How to implement different themes using Tailwind
 
 ## Author
 
