@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
 const keysList = [
-  [7, 8, 9, "DEL"],
-  [4, 5, 6, "+"],
-  [1, 2, 3, "-"],
-  [".", 0, "/", "x"],
+  ["7", "8", "9", "DEL"],
+  ["4", "5", "6", "+"],
+  ["1", "2", "3", "-"],
+  [".", "0", "/", "x"],
 ];
 
 const themeList = ["theme-one", "theme-two", "theme-three"];
@@ -19,16 +19,53 @@ const useThemeToggler = (item: number): [number, (v: number) => void] => {
 
   return [
     theme,
-    (e: number) => {
-      const currentIndex = e;
-      setTheme(currentIndex);
+    (v: number) => {
+      const currentThemeIndex = v;
+      setTheme(currentThemeIndex);
     },
   ];
 };
 
 const Calculator = () => {
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState("0");
   const [theme, setTheme] = useThemeToggler(1);
+
+  const handleKeyInput = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const input = event.currentTarget.value;
+
+    if (result === "0") {
+      setResult("");
+    }
+    setResult((v) => v.concat(input));
+  };
+
+  const handleEqual = () => {
+    let evalResult = "";
+    try {
+      evalResult = eval(result);
+    } catch (e) {
+      console.log(e);
+    }
+    if (evalResult === undefined || evalResult === "") {
+      handleReset();
+    } else {
+      setResult(evalResult.toString());
+    }
+  };
+
+  const handleReset = () => {
+    setResult("0");
+  };
+
+  const handleDelete = () => {
+    if (result.length === 1) {
+      handleReset();
+    } else {
+      const newResult = result.slice(0, -1);
+      setResult(newResult);
+    }
+  };
+
   return (
     <div className=" p-6 max-w-lg md:mx-auto">
       <div className=" flex justify-between items-center">
@@ -61,14 +98,25 @@ const Calculator = () => {
       <div className=" bg-background-keypad rounded-lg p-6">
         <div className=" grid grid-cols-4 gap-3">
           {keysList.flat().map((item, index) => (
-            <KeyButton key={index} keyValue={item} />
+            <KeyButton
+              key={index}
+              handleDelete={handleDelete}
+              handleKeyInput={handleKeyInput}
+              keyValue={item}
+            />
           ))}
         </div>
         <div className=" flex justify-between items-center gap-2 pt-4">
-          <button className=" text-text-secondary uppercase bg-resetKey-background shadow-keyShadow shadow-resetKey-shadow w-full rounded-md py-3">
+          <button
+            onClick={handleReset}
+            className=" text-text-secondary uppercase bg-resetKey-background shadow-keyShadow shadow-resetKey-shadow w-full rounded-md py-3"
+          >
             Reset
           </button>
-          <button className=" text-text-secondary bg-equalKey-background shadow-equalKey-shadow shadow-keyShadow w-full rounded-md py-3">
+          <button
+            onClick={handleEqual}
+            className=" text-text-secondary bg-equalKey-background shadow-equalKey-shadow shadow-keyShadow w-full rounded-md py-3"
+          >
             =
           </button>
         </div>
@@ -77,15 +125,24 @@ const Calculator = () => {
   );
 };
 
-const KeyButton = ({ keyValue }: { keyValue: string | number }) => {
+const KeyButton = ({
+  keyValue,
+  handleKeyInput,
+  handleDelete,
+}: {
+  keyValue: string;
+  handleKeyInput: React.MouseEventHandler<HTMLButtonElement>;
+  handleDelete: React.MouseEventHandler<HTMLButtonElement>;
+}) => {
   return (
     <button
+      value={keyValue === "x" ? "*" : keyValue}
+      onClick={keyValue === "DEL" ? handleDelete : handleKeyInput}
       className={`${
         keyValue !== "DEL"
           ? "bg-numberKey-background shadow-numberKey-shadow text-text-numberKey pt-2 hover:bg-opacity-10"
           : "bg-resetKey-background shadow-resetKey-shadow text-text-secondary text-lg pt-1"
       } text-center rounded-lg text-numbersFontSize shadow-keyShadow`}
-      onClick={() => console.log(keyValue)}
     >
       {keyValue}
     </button>
