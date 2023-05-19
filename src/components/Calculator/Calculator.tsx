@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "../../context/ThemeContext";
 const keysList = [
   ["7", "8", "9", "DEL"],
   ["4", "5", "6", "+"],
@@ -9,26 +9,15 @@ const keysList = [
 
 const themeList = ["theme-one", "theme-two", "theme-three"];
 
-const useThemeToggler = (item: number): [number, (v: number) => void] => {
-  const [theme, setTheme] = useState<number>(item);
+const Calculator = () => {
+  const [result, setResult] = useState("0");
+
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     document.body.classList.value = "";
     document.body.classList.add(themeList[theme - 1]);
   }, [theme]);
-
-  return [
-    theme,
-    (v: number) => {
-      const currentThemeIndex = v;
-      setTheme(currentThemeIndex);
-    },
-  ];
-};
-
-const Calculator = () => {
-  const [result, setResult] = useState("0");
-  const [theme, setTheme] = useThemeToggler(1);
 
   const handleKeyInput = (event: React.MouseEvent<HTMLButtonElement>) => {
     const input = event.currentTarget.value;
@@ -70,21 +59,23 @@ const Calculator = () => {
     <div className=" p-6 max-w-lg md:mx-auto">
       <div className=" flex justify-between items-center">
         <p className=" text-4xl">calc</p>
-        <div className=" flex justify-between gap-2">
-          <p className=" uppercase tracking-wider self-end pb-1">Theme</p>
-          <div>
-            <div className=" flex justify-between px-3">
-              <p>1</p>
-              <p>2</p>
-              <p>3</p>
-            </div>
+        <div className=" flex flex-col justify-between">
+          <div className=" flex self-end gap-4 justify-between px-3">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+          </div>
+          <div className=" flex items-start gap-2">
+            <label className=" uppercase tracking-wider self-end pb-1">
+              Theme
+            </label>
+
             <input
               className="w-[5rem] cursor-pointer"
               type="range"
-              name=""
-              id=""
+              name="theme"
               value={theme}
-              onChange={(e) => setTheme(parseInt(e.target.value))}
+              onChange={(e) => toggleTheme(parseInt(e.target.value))}
               min={1}
               max={3}
               step={1}
